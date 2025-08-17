@@ -7,20 +7,53 @@
 </head>
 <body>
     <h1>CADASTRO</h1>
-    <form action="cadastrado_Usuario" method="post">
+    <form action="/cadastro/novo/" method="post">
         <label for="nome">Nome</label>
-        <input type="text" id="usuario">
+        <input type="text" id="nome" name="nome">
         </br>
         </br>
         <label for="email">Email</label>
-        <input type="text" id="email">
+        <input type="text" id="email" name="email">
         </br>
         </br>
         <label for="senha">Senha</label>
-        <input type="password" id="senha">
+        <input type="password" id="senha" name="senha">
         </br>
+        </br>
+        <label for="endereco">Endereço</label>
+        <input type="text" id="endereco" name="endereco">
         </br>
         <input type="submit" value="cadastrar">
     </form>
+    </br>
+    </br>
+    
+    <a href={{ url_for('index') }}>Voltar ao inicio</a>
+
+    <h1>Lista de Usuário</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>nome</th>
+                <th>Email</th>
+                <th>Senha</th>
+                <th>Endereco</th>
+                <th>Atualizar</th>
+                <th>Deletar</th>
+            </tr>
+        <thead>
+        <tbody>
+            {% for usuario in usuarios %}
+                <tr>
+                    <td>{{ usuario.nome }}</td>
+                    <td>{{ usuario.email }}</td>
+                    <td>{{ usuario.senha }}</td>
+                    <td>{{ usuario.endereco }}</td>
+                    <td><a href={{ url_for("atualizarUsuario", id=usuario.id)}}>Atualizar</a></td>
+                    <td><a href={{ url_for("deletarUsuario", id=usuario.id)}}>Deletar</a></td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 </body>
 </html>

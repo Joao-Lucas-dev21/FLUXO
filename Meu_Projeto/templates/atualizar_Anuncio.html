@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fluxo - Anuncio</title>
+</head>
+<body>
+    <h1>Atualizar Anuncio</h1>
+
+    <form action="/atualizar/anuncio/{{ anuncio.id }}" method="post">
+        <label for="nome_anuncio">Nome do Anuncio:</label>
+        <input type="text" name="nome_anuncio" id="nome_anuncio" value="{{anuncio.nome_Do_Anuncio}}">
+    </br>
+    </br>
+        <label for="valor_Anuncio">Valor:</label>
+        <input type="number" name="valor_Anuncio" id="valor_Anuncio" value="{{anuncio.valor_Anuncio}}">
+    </br>
+    </br>
+        <label for="quantidade">Quantidade:</label>
+        <input type="number" name="quantidade" id="quantidade" value="{{anuncio.quantidade_Anuncio}}">
+    </br>
+    </br>
+        
+    </br>
+    </br>
+        <label for="descricao_Anuncio">Descrição:</label>
+        <textarea rows="3" name="descricao_Anuncio" id="descricao_Anuncio" value="{{anuncio.descricao_Anuncio}}" ></textarea>
+    </br>
+    </br>
+        <button type="submit">Adicionar</button>
+    </form>
+
+    <a href="{{ url_for('anuncio') }}">Cancelar</a>
+</body>
+</html>

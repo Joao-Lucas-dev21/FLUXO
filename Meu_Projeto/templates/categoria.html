@@ -6,6 +6,36 @@
     <title>Fluxo - Categoria</title>
 </head>
 <body>
-    <h1>Categoria</h1>
+    <h1>Criar Categoria</h1>
+
+    <form action="/criar/categoria" method="post">
+        <label for="nome_Categoria">Tema:</label>
+        <input type="text" name="nome_Categoria" id="nome_Categoria">
+    </br>
+    </br>
+    <input type="submit" value="Cadastrar">
+    </form>
+    </br>
+    </br>
+    <a href={{ url_for('index') }}>Voltar ao inicio</a>
+
+    <h1>Lista de Categoria</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Tema</th>
+                <th>Deletar</th>
+            </tr>
+            <tbody>
+            {% for categoria in categorias %}
+                <tr>
+                    <td>{{ categoria.tema }}</td>
+                    <td><a href={{ url_for('atualizarCategoria', id=categoria.id) }}>Atualizar</a></td>
+                    <td><a href={{ url_for('deletarCategoria', id=categoria.id) }}>Deletar</a></td>
+
+                </tr>
+            {% endfor %}
+        </tbody>
+        <thead>
 </body>
 </html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FLUXO - ATUALIZAR CADASTRO</title>
+</head>
+<body>
+    <h1>ATUALIZAR CADASTRO</h1>
+    <form action="/cadastro/atualizar/{{ usuario.id }}" method="POST">
+        <label for="nome">Nome</label>
+        <input type="text" id="nome" name="nome" value="{{usuario.nome}}">
+        </br>
+        </br>
+        <label for="email">Email</label>
+        <input type="text" id="email" name="email" value="{{usuario.email}}">
+        </br>
+        </br>
+        <label for="senha">Senha</label>
+        <input type="password" id="senha" name="senha" value="{{usuario.senha}}">
+        </br>
+        </br>
+        <label for="endereco">Endereço</label>
+        <input type="text" id="endereco" name="endereco" value="{{usuario.endereco}}">
+        </br>
+        <input type="submit" value="alterar">
+    </form>
+
+    <a href={{ url_for("user_Cad")}}>cancelar</a>
+    
+</body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FLUXO - ATUALIZAR CATEGORIA</title>
+</head>
+<body>
+    <h1>ATUALIZAR CATEGORIA</h1>
+    <form action="/atualizar/categoria/{{ categoria.id }}" method="POST">
+        <label for="nome">Tema:</label>
+        <input type="text" id="nome_Categoria" name="nome_Categoria" value="{{categoria.tema}}">
+        </br>
+        </br>
+        <input type="submit" value="alterar">
+    </form>
+
+    <a href={{ url_for("criarCategoria")}}>cancelar</a>
+    
+</body>
+</html>
