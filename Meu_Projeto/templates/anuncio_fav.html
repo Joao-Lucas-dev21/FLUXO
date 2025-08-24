@@ -1,11 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
     <title>Fluxo - Favoritos</title>
 </head>
-<body>
-    <h1>Anuncios Favoritos</h1>
+
+<body class="h-100 bg-body-secondary">
+    <div class="bg-black text-white text-uppercase">
+        <ul class="nav justify-content-center p-3">
+            <li class="nav-item">
+                <a class="nav-link" href={{url_for("index")}}>inicio</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href={{url_for("anuncio")}}>Anuncios</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href={{url_for("categoria")}}>Categorias</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href={{url_for("mostrarFavoritos")}}>Favoritos</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href={{url_for("logout")}}>logout</a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="d-flex vh-100 justify-content-center align-items-center">
+        <div class="bg-body-tertiary shadow text-body rounded w-75">
+            <h2 class="text-center p-2 mb-5">❤️ Meus Favoritos ❤️</h2>
+            <ul class="text-center p-2 mb-5 list-unstyled">
+                {% for anuncio in favoritos %}
+                <li>
+                    <a class="btn btn-primary w-25 mb-3" href="{{ url_for('mostrarAnuncio', id_Anuncio=anuncio.id) }}">
+                        {{ anuncio.nome_Do_Anuncio }}
+                    </a> <a href="{{ url_for('removerFav', id_Anuncio=anuncio.id) }}" class="btn btn-danger btn-sm">
+                        🗑️
+                    </a>
+                </li>
+                {% else %}
+                <li>Você não tem anúncios favoritos ainda.</li>
+                {% endfor %}
+            </ul>
+            <div class="text-center">
+                <a href={{ url_for('index') }}><button class="btn btn-secondary w-25 mb-3">Voltar para o
+                        inicio</button></a>
+            </div>
+        </div>
+    </div>
+
 </body>
+
 </html>

@@ -1,15 +1,80 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
     <title>Fluxo</title>
 </head>
-<body>
-    <h1>Seja bem-vindo ao Fluxo!</h1>
-    <a href={{url_for("user_Cad")}}>Cadastro de Usuário</a> </br>
-    <a href={{url_for("anuncio")}}>Anuncios</a></br>
-    <a href={{url_for("categoria")}}>Categorias</a></br>
 
-</body>
+<body class="h-100 bg-body-secondary">
+    <div class="bg-black text-white text-uppercase">
+        <ul class="nav justify-content-center p-3">
+            <li class="nav-item">
+                <a class="nav-link" href={{url_for("index")}}>inicio</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href={{url_for("anuncio")}}>Anuncios</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href={{url_for("categoria")}}>Categorias</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href={{url_for("mostrarFavoritos")}}>Favoritos</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href={{url_for("logout")}}>logout</a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="my-5 mb-5 text-center">
+        <h1 class="text-uppercase">Seja bem-vindo ao Fluxo</h1>
+    </div>
+
+    <div class="my-5 mb-5 text-center">
+        <h2>A História da Fluxo</h3>
+    </div>
+
+
+    <div class="d-flex justify-content-center align-items-center">
+        <div class="m-4 w-25">
+            <img src="{{ url_for('logo') }}" class="card-img-top" alt="...">
+        </div>
+        <div class="w-25">
+            <div class="card-body">
+                <p class="fs-4">A Fluxo nasceu com uma ideia simples, mas poderosa: tudo na vida está em
+                    movimento.
+                    Assim como o rio segue seu curso, acreditamos que os produtos também têm um caminho a seguir.
+
+                    Nossa filosofia é que sempre existe uma compra depois do consumo. Se algo não servir para você, pode
+                    servir
+                    perfeitamente para outra pessoa. O que não encontrou utilidade em uma casa, pode ganhar vida nova em
+                    outra.</p>
+            </div>
+        </div>
+    </div>
+
+
+    <div class=" container border border-black">
+        <div class="d-flex justify-content-center align-items-center">
+            <div class=" fs-4 p-3 text-center w-70">
+                <p>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    {% for anuncio in anuncios %}
+    <div class="container">
+        <div class="text-center d-grid my-5 mb-5 p-4 shadow-sm bg-body-tertiary rounded">
+            <h3 class="fw-semibold"> {{ anuncio.nome_Do_Anuncio }}</h3>
+            <p class="fw-medium"> R${{ anuncio.valor_Anuncio }}</p>
+            <td><a href="{{ url_for('mostrarAnuncio', id_Anuncio=anuncio.id) }}"><button
+                        class="btn btn-primary rounded">Ver Detalhes</button></a></td>
+        </div>
+    </div>
+    {% endfor %}
+
 </html>

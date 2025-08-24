@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>Fluxo - Anuncio</title>
+</head>
+
+<body class="h-100 bg-body-secondary">
+    <div class="bg-black text-white text-uppercase">
+        <ul class="nav justify-content-center p-3">
+            <li class="nav-item">
+                <a class="nav-link" href={{url_for("index")}}>inicio</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href={{url_for("anuncio")}}>Anuncios</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href={{url_for("categoria")}}>Categorias</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href={{url_for("mostrarFavoritos")}}>Favoritos</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href={{url_for("logout")}}>logout</a>
+            </li>
+        </ul>
+    </div>
+
+    
+    <div class="d-flex vh-100 justify-content-center align-items-center">
+        <div class="bg-body-tertiary shadow text-body rounded">
+            <div class="container">
+                <div class="row text-center p-4 mb-2">
+                    <div class="col-12 mb-5">
+                        <h1 class="text-uppercase">{{anuncio.nome_Do_Anuncio}}</h1>
+                    </div>
+                    <div class="col-6">
+                        <h3>Quantidade: {{anuncio.quantidade_Anuncio}}</h3>
+                    </div>
+                    <div class="col-6">
+                        <h3>Preço: R${{anuncio.valor_Anuncio}}</h3>
+                    </div>
+                    <div class="w-100 mb-5"></div>
+                    <div class="col-12">
+                        <h3>Descrição: {{anuncio.descricao_Anuncio}}</h3>
+                    </div>
+
+                    <div class="d-grid gap-3 my-5">
+                        <a href={{ url_for("compra", id=anuncio.id) }}><button
+                                class="text-center btn btn-success w-25 text-white">Comprar</button></a>
+
+                        <a href="{{ url_for('favoritar', id_Anuncio=anuncio.id) }}"><button
+                                class="btn btn-danger rounded w-25 text-white">Adicionar Favoritos</button></a>
+
+                        <a href={{ url_for('index') }}><button class="text-center btn btn-secondary w-25">Voltar para o
+                                inicio</button></a>
+                    </div>
+                </div>
+            </div>
+
+            <form class="text-uppercase">
+                <div class="row text-center p-3">
+                    <div class="col-12 mb-3">
+                        <label class="form-label" for="comentario">Deixar comentário:</label>
+                        <input class="form-control" type="text" id="comentario" name="comentario"
+                            placeholder="Digite seu comentário aqui">
+                    </div>
+                </div>
+
+                <div class="row text-center">
+                    <div class="col-12">
+                        <button class="btn btn-primary w-25 mb-4" type="submit">Enviar</button>
+                    </div>
+                </div>
+            </form>
+
+        </div>
+    </div>
+    </div>
+
+
+
+</body>
+
+</html>

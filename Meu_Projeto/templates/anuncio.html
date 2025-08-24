@@ -1,62 +1,72 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
     <title>Fluxo - Anuncio</title>
 </head>
-<body>
-    <h1>Criar Anuncio</h1>
 
-    <form action="/criar/anuncio" method="post">
-        <label for="nome_anuncio">Nome do Anuncio:</label>
-        <input type="text" name="nome_anuncio" id="nome_anuncio">
-    </br>
-    </br>
-        <label for="valor_Anuncio">Valor:</label>
-        <input type="number" name="valor_Anuncio" id="valor_Anuncio">
-    </br>
-    </br>
-        <label for="quantidade">Quantidade:</label>
-        <input type="number" name="quantidade" id="quantidade">
-    </br>
-    </br>
-        
-    </br>
-    </br>
-        <label for="descricao_Anuncio">Descrição:</label>
-        <textarea rows="3" name="descricao_Anuncio" id="descricao_Anuncio"></textarea>
-    </br>
-    </br>
-        <button type="submit">Adicionar</button>
-    </form>
-    </br>
-    </br>
-<a href={{ url_for('index') }}>Voltar ao inicio</a>
+<body class="h-100 bg-body-secondary">
+    <div class="bg-black text-white text-uppercase">
+        <ul class="nav justify-content-center p-3">
+            <li class="nav-item">
+                <a class="nav-link" href={{url_for("index")}}>inicio</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href={{url_for("anuncio")}}>Anuncios</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href={{url_for("categoria")}}>Categorias</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href={{url_for("mostrarFavoritos")}}>Favoritos</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href={{url_for("logout")}}>logout</a>
+            </li>
+        </ul>
+    </div>
 
-    <h1>Lista de Anuncios</h1>
-    <table>
-        <thead>
-            <tr>
-                <th>nome</th>
-                <th>Valor</th>
-                <th>Quantidade</th>
-                <th>Descrição</th>
-                <th>Atualizar</th>
-                <th>Deletar</th>
-            </tr>
-        <thead>
-        <tbody>
-            {% for anuncio in anuncios %}
-                <tr>
-                    <td>{{ anuncio.nome_Do_Anuncio }}</td>
-                    <td>{{ anuncio.valor_Anuncio }}</td>
-                    <td>{{ anuncio.quantidade_Anuncio }}</td>
-                    <td>{{ anuncio.descricao_Anuncio }}</td>
-                    <td><a href={{ url_for("atualizarAnuncio", id=anuncio.id) }}>Atualizar</a></td>
-                    <td><a href={{ url_for("deletarAnuncio", id=anuncio.id)}}>Deletar</a></td>
-                </tr>
-            {% endfor %}
-        </tbody>
+    <div class="d-flex vh-100 justify-content-center align-items-center">
+        <div class="bg-body-tertiary shadow text-body rounded w-75">
+            <h1 class="text-center p-2 mb-5">Criar Anuncio</h1>
+
+            <form class="text-uppercase" action="/criar/anuncio" method="post">
+                <div class="row text-center p-3">
+                    <div class="col-4">
+                        <label class="form-label" for="nome_anuncio">Nome do Anuncio:</label>
+                        <input class="form-control" required type="text" name="nome_anuncio" id="nome_anuncio">
+                    </div>
+                    <div class="col-4">
+                        <label class="form-label" for="valor_Anuncio">Valor:</label>
+                        <input class="form-control" required type="number" name="valor_Anuncio" id="valor_Anuncio">
+                    </div>
+                    <div class="col-4 mb-4">
+                        <label class="form-label" for="quantidade">Quantidade:</label>
+                        <input class="form-control" required type="number" name="quantidade" id="quantidade">
+                    </div>
+                    <div class="col-12">
+                        <label class="form-label" for="descricao_Anuncio">Descrição:</label>
+                    </div>
+                    <div class="col-12 mb-3">
+                        <textarea class="form-control" required cols="100 " rows="5" name="descricao_Anuncio"
+                            id="descricao_Anuncio"></textarea>
+                    </div>
+
+                    <div class="row text-center">
+                        <div class="col-12">
+                            <button class="btn btn-primary w-10 mb-3" type="submit">Adicionar</button>
+                        </div>
+                        <div class="col-12">
+                            <a class="text-center btn btn-secondary mb-3" href={{ url_for('index') }}>Voltar para o
+                                inicio</a>
+                        </div>
+                    </div>
+            </form>
+        </div>
+    </div>
 </body>
+
 </html>
